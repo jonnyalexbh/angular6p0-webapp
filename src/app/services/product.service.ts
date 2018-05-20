@@ -14,7 +14,7 @@ import { GLOBAL } from './global';
 *
 */
 export class ProductService {
-  
+
   public url: string;
   /**
   * constructor
@@ -31,6 +31,23 @@ export class ProductService {
   */
   getProducts(){
     return this._http.get(this.url+'products').pipe(map(res => res.json()));
+  }
+  /**
+  * addProduct
+  *
+  */
+  addProduct(product: Product){
+    let json = JSON.stringify({
+      "nombre": product.name,
+      "descripcion": product.description,
+      "precio": product.price
+    });
+
+    let params = 'json='+json;
+    let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+
+    return this._http.post(this.url+'products', params, {headers: headers})
+    .pipe(map(res => res.json()))
   }
 
 }
