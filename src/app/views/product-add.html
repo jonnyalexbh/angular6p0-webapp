@@ -1,2 +1,21 @@
 <h3>{{ title }}</h3>
 <hr>
+
+<form #formProducto="ngForm" class="col-lg-6" id="form-product">
+
+  <label for="">Name</label>
+  <input type="text" class="form-control" />
+
+  <label for="">Description</label>
+  <textarea class="form-control" required></textarea>
+
+  <label for="">Price</label>
+  <input type="text" class="form-control" />
+
+  <label for="">Image</label>
+  <input type="file" class="form-control" />
+  
+  <br/>
+  <input type="submit" value="{{ title }}" class="btn btn-success">
+
+</form>
