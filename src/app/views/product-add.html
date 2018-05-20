@@ -1,21 +1,27 @@
 <h3>{{ title }}</h3>
 <hr>
 
-<form #formProducto="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-product">
+<form #formProduct="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-product">
 
-  <label for="">Name</label>
-  <input type="text" #nombre="ngModel" name="name" [(ngModel)]="product.name" class="form-control" />
+  <label for="">Nombre
+    <span *ngIf="!name.valid && name.touched" class="label label-danger">The name is required</span>
+  </label>
+  <input type="text" #name="ngModel" name="name" [(ngModel)]="product.name" class="form-control" required />
 
-  <label for="">Description</label>
-  <textarea #descripcion="ngModel" name="description" [(ngModel)]="product.description" class="form-control" required></textarea>
+  <label for="">Description
+    <span *ngIf="!description.valid && description.touched" class="label label-danger">The description is required</span>
+  </label>
+  <textarea #description="ngModel" name="description" [(ngModel)]="product.description" class="form-control" required></textarea>
 
-  <label for="">Price</label>
-  <input type="text" #precio="ngModel" name="price" [(ngModel)]="product.price"  class="form-control" />
+  <label for="">Price
+    <span *ngIf="!price.valid && price.touched" class="label label-danger">the price is not correct</span>
+  </label>
+  <input type="text" #price="ngModel" name="price" [(ngModel)]="product.price" class="form-control" required pattern="[0-9]+" />
 
   <label for="">Image</label>
   <input type="file" class="form-control" />
 
   <br/>
-  <input type="submit" value="{{ title }}" class="btn btn-success">
+  <input type="submit" value="{{ title }}" [disabled]="!formProduct.form.valid" class="btn btn-success"/>
 
 </form>
