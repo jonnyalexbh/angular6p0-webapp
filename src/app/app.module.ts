@@ -7,11 +7,13 @@ import { routing, appRoutingProviders } from './app.routing';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
+import { ErrorComponent } from './components/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
