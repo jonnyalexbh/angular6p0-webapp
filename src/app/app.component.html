@@ -1,5 +1,5 @@
 <div id="content" class="col-lg-10 col-lg-offset-1">
-  <header id="header" class="col-lg-12">
+  <header id="header" class="col-lg-12" [style.background]="header_color">
     <h1>
       {{ title }}
     </h1>
@@ -17,7 +17,7 @@
     <!-- Component current -->
     <router-outlet></router-outlet>
   </section>
-
+  
   <footer id="footer" class="col-lg-12">
     <p>Angular 6 - jonnyalexbh</p>
   </footer>
