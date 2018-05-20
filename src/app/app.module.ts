@@ -8,12 +8,14 @@ import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { ErrorComponent } from './components/error.component';
+import { ProductosListComponent } from './components/productos-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    ProductosListComponent
   ],
   imports: [
     BrowserModule,
