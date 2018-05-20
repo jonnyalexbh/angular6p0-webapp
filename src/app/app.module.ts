@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 // Routes
 import { routing, appRoutingProviders } from './app.routing';
@@ -8,17 +9,18 @@ import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { ErrorComponent } from './components/error.component';
-import { ProductosListComponent } from './components/productos-list.component';
+import { ProductsListComponent } from './components/products-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorComponent,
-    ProductosListComponent
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     routing
   ],
   providers: [appRoutingProviders],
