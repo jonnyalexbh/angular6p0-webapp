@@ -14,7 +14,7 @@ import { GLOBAL } from './global';
 *
 */
 export class ProductService {
-
+  
   public url: string;
   /**
   * constructor
@@ -30,7 +30,7 @@ export class ProductService {
   *
   */
   getProducts(){
-    return "TEXT FROM THE SERVICE";
+    return this._http.get(this.url+'products').pipe(map(res => res.json()));
   }
 
 }
