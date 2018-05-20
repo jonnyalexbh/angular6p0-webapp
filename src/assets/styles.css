@@ -54,6 +54,12 @@
   background: #E03137;
 }
 
+#main .jumbotron{
+  padding: 50px;
+  margin-top: 30px;
+  border-radius: 5px;
+}
+
 #footer{
   margin-top:30px;
   padding-top: 10px;
