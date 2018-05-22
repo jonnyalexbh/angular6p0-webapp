@@ -33,6 +33,13 @@ export class ProductService {
     return this._http.get(this.url+'products').pipe(map(res => res.json()));
   }
   /**
+  * getProduct
+  *
+  */
+  getProduct(id){
+    return this._http.get(this.url+'products/'+id).pipe(map(res => res.json()));
+  }
+  /**
   * addProduct
   *
   */

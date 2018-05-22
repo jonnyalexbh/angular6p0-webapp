@@ -8,7 +8,7 @@ import { Product } from '../models/product';
 *
 */
 @Component({
-  selector: 'producto-detail',
+  selector: 'product-detail',
   templateUrl: '../views/product-detail.html',
   providers: [ProductService]
 })
@@ -33,6 +33,29 @@ export class ProductDetailComponent {
   */
   ngOnInit() {
     console.log('product-detail.Component.ts loaded...');
+    this.getProduct();
+  }
+  /**
+  * getProduct
+  *
+  */
+  getProduct(){
+    this._route.params.forEach((params: Params) => {
+      let id = params['id'];
+
+      this._productService.getProduct(id).subscribe(
+        response => {
+          if(response.code == 200){
+            this.product = response.data;
+          }else{
+            this._router.navigate(['/products']);
+          }
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+    });
   }
 
 }
