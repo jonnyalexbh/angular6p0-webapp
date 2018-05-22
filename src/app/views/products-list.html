@@ -6,10 +6,27 @@
 </div>
 
 <div *ngIf="products">
-  <ul>
-    <li *ngFor="let product of products">
-      <strong>{{ product.nombre }}</strong>
-      <p>{{ product.precio | currency}}</p>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let product of products">
+      <div class="thumbnail">
+        <div *ngIf="product.imagen" class="image_container">
+          <img src="http://localhost:92/uploads/{{product.imagen}}" class="product_image"/>
+        </div>
+        <div *ngIf="!product.imagen">
+          <div class="image_filling"></div>
+        </div>
+        <div class="caption">
+          <h3>{{ product.nombre }}</h3>
+          <p>{{ product.precio | currency }}</p>
+
+          <div>
+            <a class="btn btn-md btn-primary">See</a>
+            <a class="btn btn-md btn-warning">Edit</a>
+            <a class="btn btn-md btn-danger">Delete</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
