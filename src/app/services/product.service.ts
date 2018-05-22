@@ -40,7 +40,8 @@ export class ProductService {
     let json = JSON.stringify({
       "nombre": product.name,
       "descripcion": product.description,
-      "precio": product.price
+      "precio": product.price,
+      "imagen": product.image
     });
 
     let params = 'json='+json;
@@ -48,6 +49,33 @@ export class ProductService {
 
     return this._http.post(this.url+'products', params, {headers: headers})
     .pipe(map(res => res.json()))
+  }
+  /**
+  * makeFileRequest
+  *
+  */
+  makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+    return new Promise((resolve, reject)=>{
+      var formData: any = new FormData();
+      var xhr = new XMLHttpRequest();
+
+      for(var i = 0; i < files.length; i++){
+        formData.append('uploads[]', files[i], files[i].name);
+      }
+
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+          if(xhr.status == 200){
+            resolve(JSON.parse(xhr.response));
+          }else{
+            reject(xhr.response);
+          }
+        }
+      };
+
+      xhr.open("POST", url, true);
+      xhr.send(formData);
+    });
   }
 
 }

@@ -9,7 +9,7 @@
   <ul>
     <li *ngFor="let product of products">
       <strong>{{ product.nombre }}</strong>
-      <p>{{ product.precio }}</p>
+      <p>{{ product.precio | currency}}</p>
     </li>
   </ul>
 </div>

@@ -21,6 +21,8 @@ export class ProductAddComponent {
 
   public title: string;
   public product: Product;
+  public filesToUpload;
+  public resultUpload;
   /**
   * constructor
   *
@@ -46,7 +48,25 @@ export class ProductAddComponent {
   */
   onSubmit() {
     console.log(this.product);
-    
+    if(this.filesToUpload && this.filesToUpload.length >= 1){
+      this._productService.makeFileRequest(GLOBAL.url+'upload-file', [], this.filesToUpload).then((result) => {
+        console.log(result);
+        this.resultUpload = result;
+        this.product.image = this.resultUpload.filename;
+        this.saveProduct();
+
+      }, (error) =>{
+        console.log(error);
+      });
+    }else{
+      this.saveProduct();
+    }
+  }
+  /**
+  * saveProduct
+  *
+  */
+  saveProduct(){
     this._productService.addProduct(this.product).subscribe(
       response => {
         if(response.code == 200){
@@ -59,6 +79,14 @@ export class ProductAddComponent {
         console.log(<any>error);
       }
     )
+  }
+  /**
+  * fileChangeEvent
+  *
+  */
+  fileChangeEvent(fileInput: any){
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    console.log(this.filesToUpload);
   }
 
 }
