@@ -20,7 +20,7 @@
           <p>{{ product.precio | currency }}</p>
 
           <div>
-            <a class="btn btn-md btn-primary">See</a>
+            <a [routerLink]="['/product', product.id]" class="btn btn-md btn-primary">See</a>
             <a class="btn btn-md btn-warning">Edit</a>
             <a class="btn btn-md btn-danger">Delete</a>
           </div>
