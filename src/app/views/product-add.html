@@ -17,8 +17,11 @@
     <span *ngIf="!price.valid && price.touched" class="label label-danger">the price is not correct</span>
   </label>
   <input type="text" #price="ngModel" name="price" [(ngModel)]="product.price" class="form-control" required pattern="[0-9]+" />
-  
+
   <label for="">Image</label>
+  <div *ngIf="is_edit">
+    <img src="http://10.20.17.78:280/uploads/{{product.image}}" width="60"/>
+  </div>
   <input type="file" class="form-control" (change)="fileChangeEvent($event)"/>
 
   <br/>
