@@ -78,6 +78,14 @@ export class ProductService {
     .pipe(map(res => res.json()));
   }
   /**
+  * deleteProduct
+  *
+  */
+  deleteProduct(id){
+    return this._http.get(this.url+'delete-product/'+id)
+    .pipe(map(res => res.json()));
+  }
+  /**
   * makeFileRequest
   *
   */

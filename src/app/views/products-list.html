@@ -21,7 +21,13 @@
           <div class="btn-toolbar">
             <a [routerLink]="['/product', product.id]" class="btn btn-md btn-primary">See</a>
             <a [routerLink]="['/edit-product', product.id]" class="btn btn-md btn-warning">Edit</a>
-            <a class="btn btn-md btn-danger">Delete</a>
+            <a (click)="deleteConfirm(product.id)" class="btn btn-md btn-danger">Delete</a>
+          </div>
+          <div *ngIf="confirmed == product.id">
+            <a (click)="onDeleteProduct(product.id)" class="btn btn-md btn-danger">
+              I want to delete it
+            </a>
+            <a (click)="cancelConfirm()" class="btn btn-md btn-warning">Cancel</a>
           </div>
         </div>
       </div>

@@ -3,8 +3,8 @@
     <h2>{{ title }}</h2>
     <p>The page you are trying to load does not exist, try these buttons:</p>
     <p>
-      <a class="btn btn-lg btn-primary">See products</a>
-      <a class="btn btn-lg btn-success">Add products</a>
+      <a [routerLink]="['/products']" class="btn btn-lg btn-primary">See products</a>
+      <a [routerLink]="['/create-product']" class="btn btn-lg btn-success">Add products</a>
     </p>
   </div>
 </div>
